@@ -1059,7 +1059,8 @@
                     ["jetFuelRefinery", "rocketHullMaker", "rocketWarheadMaker", "rocketAssembler"],
                     ["droneMaker", "droneControlRoom", "droneSeller"],
                     ["metalsLab", "gasAndOilLab", "analystCenter", "qualityLab"],
-                    ["researchCenter", "researchCenter2", "researchCenter3", "researchCenter4"]
+                    ["researchCenter", "researchCenter2", "researchCenter3", "researchCenter4"],
+		   			["titaniumBuyer", "pMaker", "hMaker", "hSeller"]
                 ],
                 productionTree: {
                     ironFoundry: {
@@ -1068,6 +1069,25 @@
                     ironSeller: {
                         iron: "ironFoundry"
                     },
+					pMaker: {
+						titanium: "titaniumBuyer",
+						steel: "steelFoundry"
+					},
+					hMaker: {
+						propeller: "pMaker",
+						steel: "steelFoundry",
+						electronics: "electronicsMaker",
+						engine: "engineMaker",
+						guns: "gunMaker",
+						plastic: "plasticMaker",
+						aluminium: "aluminiumBuyer"
+					},
+					hSeller: {
+						helicopter: "hMaker",
+						jetFuel: "jetFuelRefinery",
+                        rocket: "rocketAssembler",
+						tank: "tankAssembler"
+					},
                     steelFoundry: {
                         iron: "ironFoundry",
                         coal: "coalBuyer"
@@ -1207,7 +1227,156 @@
                         removeAmount: 5,
                         interval: 10
                     }
-                }, {
+              }, {
+					id: "titaniumBuyer",
+					idNum: 96,
+					name: "Titanium Buyer",
+					description: "Buys Titanium.",
+					width: 2,
+					height: 2,
+					spriteX: 14,
+					spriteY: 0,
+					iconX: 8,
+					iconY: 3,
+					runningCostPerTick: 50000000000,
+					requiresResearch: "hComponents",
+					price: 40000000000000000,
+					priceRefund: .5,
+					strategy: {
+						type: "buyer",
+						purchaseResources: {
+							titanium: {
+								price: 25000000000,
+								amount: 1
+							}
+						},
+						outputResourcesOrder: ["titanium"],
+						interval: 10
+					}
+				}, {
+					id: "hMaker",
+					idNum: 89,
+					name: "Helicopter Maker",
+					width: 2,
+					height: 3,
+					spriteX: 13,
+					spriteY: 11,
+					iconX: 8,
+					iconY: 4,
+					runningCostPerTick: 70000000000,
+					price: 60000000000000000,
+					priceRefund: 1,
+					requiresResearch: "hComponents",
+					strategy: {
+						type: "converter",
+						inputResources: {
+							propeller: {
+								perOutputResource: 2
+							},
+							aluminium: {
+								perOutputResource: 64
+							},
+							plastic: {
+								perOutputResource: 12
+							},
+							steel: {
+								perOutputResource: 48
+							},
+							electronics: {
+								perOutputResource: 12
+							},
+							engine: {
+								perOutputResource: 4
+							},
+							guns: {
+								perOutputResource: 16
+							}
+						},
+						production: {
+							helicopter: {
+								amount: 1
+							}
+						},
+						outputResourcesOrder: ["helicopter"],
+						interval: 10
+					}
+				}, {
+					id: "pMaker",
+					idNum: 95,
+					name: "Propeller Maker",
+					width: 3,
+					height: 2,
+					spriteX: 13,
+					spriteY: 8,
+					iconX: 9,
+					iconY: 3,
+					runningCostPerTick: 40000000000,
+					price: 40000000000000000,
+					priceRefund: 1,
+					requiresResearch: "hComponents",
+					strategy: {
+						type: "converter",
+						inputResources: {
+							titanium: {
+								perOutputResource: 2
+							},
+							steel: {
+								perOutputResource: 48
+							}
+						},
+						production: {
+							propeller: {
+								amount: 2
+							}
+						},
+						outputResourcesOrder: ["propeller"],
+						interval: 10
+					}
+				}, {
+					id: "hSeller",
+					idNum: 97,
+					name: "Helicopter seller",
+					width: 2,
+					height: 2,
+					spriteX: 13,
+					spriteY: 14,
+					iconX: 9,
+					iconY: 4,
+					runningCostPerTick: 20000000000,
+					price: 50000000000000000,
+					priceRefund: 1,
+					requiresResearch: "hComponents",
+					strategy: {
+						type: "seller",
+						resources: {
+							helicopter: {
+							   	amount: 1,
+                                sellPrice: 3,
+                                sellMargin: 1
+							},
+							 rocket: {
+                                amount: 4,
+                                sellPrice: 0,
+                                bonus: !0,
+                                sellMargin: 96
+                            },
+                            jetFuel: {
+                                amount: 32,
+                                sellPrice: 0,
+                                bonus: !0,
+                                sellMargin: 96
+                            },
+							    tank: {
+                                amount: 2,
+                                sellPrice: 0,
+                                bonus: !0,
+                                sellMargin: 4000
+                            }
+						},
+						//outputResourcesOrder: ["helicopter"],
+						interval: 10
+					}
+			}, {
                     id: "sorterVertical",
                     idNum: 36,
                     name: "Sorter",
@@ -2149,7 +2318,7 @@
                     iconX: 5,
                     iconY: 4,
                     runningCostPerTick: 1e9,
-                    price: r(6, 5),
+                    price: 6000000000000000,
                     priceRefund: 1,
                     requiresResearch: "droneComponents",
                     strategy: {
@@ -2750,6 +2919,27 @@
             nameShort: "Quality report",
             spriteX: 3,
             spriteY: 3
+	}, {
+			id: "titanium",
+			idNum: 30,
+			name: "Titanium",
+			nameShort: "Titanium",
+			spriteX: 6,
+			spriteY: 3
+		}, {
+			id: "propeller",
+			idNum: 31,
+			name: "Propeller",
+			nameShort: "Propeller",
+			spriteX: 7,
+			spriteY: 3
+		}, {
+			id: "helicopter",
+			idNum: 33,
+			name: "Helicopter",
+			nameShort: "Helicopter",
+			spriteX: 0,
+			spriteY: 2
         }]
     }), define("config/main/factories", [], function() {
         var e = [{
@@ -3151,6 +3341,94 @@
             terrainMap: "XXXXXXXXXXXXXXXXXXXXXXXXXG.GGGGGGGGGGGGGGGGGGGGGGGGGG.GXXXXXXXXXXXXXXXXXXXXXXXXXX                       XG............................GX                       XX                       XG.GXXXXXXXXXX.XX.XXXXXXXXXXG.GX                       XX                       XG.GX                      XG.GX                       XX                       XG.GX                      XG.GX                       XX                       XG.GX                      XG.GX                       XX                        G.G                        G.G                        XX                       XG.GX                      XG.GX                       XX                       XG.GX                      XG.GX                       XX                       XG.GX                      XG.GX                       XX                       XG.GX                      XG.GX                       XX                       XG.GX                      XG.GX                       XX                       XG.GX                      XG.GX                       XX                       XG.GX                      XG.GX                       XX                       XG.GX                      XG.GX                       XX                       XG.GX                      XG.GX                       XX                        G.G                        G.G                        XX                        G.G                        G.G                        XX                        G.G                        G.G                        XX                        G.G                        G.G                        XX                        G.G                        G.G                        XX                        G.G                        G.G                        XX                        G.G                        G.G                        XX                        G.G                        G.G                        XX                        G.G                        G.G                        XX                       XG.GX                      XG.GX                       XX                       XG.GX                      XG.GX                       XX                       XG.GX                      XG.GX                       XX                       XG.GX                      XG.GX                       XX                       XG.GX                      XG.GX                       XX                       XG.GX                      XG.GX                       XX                       XG.GX                      XG.GX                       XX                       XG.GX                      XG.GX                       XX                       XG.GX                      XG.GX                       XX                        G.G                        G.G                        XX                       XG.GX                      XG.GX                       XX                       XG.GX                      XG.GX                       XX                       XG.GX                      XG.GX                       XX                       XG.GXXXXXXXXXXXXXXXXXXXXXXXXG.GX                       XX                       XG.GGGGGGGGGGGGGGGGGGGGGGGGGG.GX                       XXXXXXXXXXXXXXXXXXXXXXXXXXG.GGGGGGGGGGGGGGGGGGGGGGGGGG.GXXXXXXXXXXXXXXXXXXXXXXXXX",
             buildMap: "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX                       XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX                       XX                       XXXXXXXXXXXXXX-XX-XXXXXXXXXXXXXX                       XX                       XXXXX                      XXXXX                       XX                       XXXXX                      XXXXX                       XX                       XXXXX                      XXXXX                       XX                        ---                        ---                        XX                       XXXXX                      XXXXX                       XX                       XXXXX                      XXXXX                       XX                       XXXXX                      XXXXX                       XX                       XXXXX                      XXXXX                       XX                       XXXXX                      XXXXX                       XX                       XXXXX                      XXXXX                       XX                       XXXXX                      XXXXX                       XX                       XXXXX                      XXXXX                       XX                       XXXXX                      XXXXX                       XX                        ---                        ---                        XX                        ---                        ---                        XX                        ---                        ---                        XX                        ---                        ---                        XX                        ---                        ---                        XX                        ---                        ---                        XX                        ---                        ---                        XX                        ---                        ---                        XX                        ---                        ---                        XX                       XXXXX                      XXXXX                       XX                       XXXXX                      XXXXX                       XX                       XXXXX                      XXXXX                       XX                       XXXXX                      XXXXX                       XX                       XXXXX                      XXXXX                       XX                       XXXXX                      XXXXX                       XX                       XXXXX                      XXXXX                       XX                       XXXXX                      XXXXX                       XX                       XXXXX                      XXXXX                       XX                        ---                        ---                        XX                       XXXXX                      XXXXX                       XX                       XXXXX                      XXXXX                       XX                       XXXXX                      XXXXX                       XX                       XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX                       XX                       XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX                       XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX",
             areas: []
+			}, {
+            id: "level6",
+            idNum: 6,
+            name: "Petafactory",
+            tilesX: 80,
+            tilesY: 41,
+            startX: 9,
+            startY: 8,
+            price: 1e18,
+            terrains: {
+                G: "grass",
+                X: "wall",
+                ".": "road",
+                " ": "floor"
+            },
+            buildableTerrains: {
+                floor: !0
+            },
+		terrainMap: 'XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX                                                                              XX                                                                              XX                                                                              XX                                                                              XX                                                                              XX                                                                              XX                                                                              XX                                                                              XX                                                                              XX                                                                              XX                                                                              XX                                                                              XX                                                                              XX                                                                              XX                                                                              XX                                                                              XX                                                                              XX                                                                              XX                                                                              XX                                                                              XX                                                                              XX                                                                              XX                                                                              XX                                                                              XX                                                                              XX                                                                              XX                                                                              XX                                                                              XX                                                                              XX                                                                              XX                                                                              XX                                                                              XX                                                                              XX                                                                              XX                                                                              XX                                                                              XX                                                                              XX                                                                              XX                                                                              XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX',
+buildMap: 'XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX                                                                              XX                                                                              XX                                                                              XX                                                                              XX                                                                              XX                                                                              XX                                                                              XX                                                                              XX                                                                              XX                                                                              XX                                                                              XX                                                                              XX                                                                              XX                                                                              XX                                                                              XX                                                                              XX                                                                              XX                                                                              XX                                                                              XX                                                                              XX                                                                              XX                                                                              XX                                                                              XX                                                                              XX                                                                              XX                                                                              XX                                                                              XX                                                                              XX                                                                              XX                                                                              XX                                                                              XX                                                                              XX                                                                              XX                                                                              XX                                                                              XX                                                                              XX                                                                              XX                                                                              XX                                                                              XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX',
+
+            areas: []
+ 	}, {
+            id: "level7",
+            idNum: 7,
+            name: "Exofactory",
+            tilesX: 80,
+            tilesY: 41,
+            startX: 9,
+            startY: 8,
+            price: 1e18,
+            terrains: {
+                G: "grass",
+                X: "wall",
+                ".": "road",
+                " ": "floor"
+            },
+            buildableTerrains: {
+                floor: !0
+            },
+           terrainMap: 'XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX                                                                              XX                                                                              XX                                                                              XX                                                                              XX                                                                              XX                                                                              XX                                                                              XX                                                                              XX                                                                              XX                                                                              XX                                                                              XX                                                                              XX                                                                              XX                                                                              XX                                                                              XX                                                                              XX                                                                              XX                                                                              XX                                                                              XX                                                                              XX                                                                              XX                                                                              XX                                                                              XX                                                                              XX                                                                              XX                                                                              XX                                                                              XX                                                                              XX                                                                              XX                                                                              XX                                                                              XX                                                                              XX                                                                              XX                                                                              XX                                                                              XX                                                                              XX                                                                              XX                                                                              XX                                                                              XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX',
+buildMap: 'XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX                                                                              XX                                                                              XX                                                                              XX                                                                              XX                                                                              XX                                                                              XX                                                                              XX                                                                              XX                                                                              XX                                                                              XX                                                                              XX                                                                              XX                                                                              XX                                                                              XX                                                                              XX                                                                              XX                                                                              XX                                                                              XX                                                                              XX                                                                              XX                                                                              XX                                                                              XX                                                                              XX                                                                              XX                                                                              XX                                                                              XX                                                                              XX                                                                              XX                                                                              XX                                                                              XX                                                                              XX                                                                              XX                                                                              XX                                                                              XX                                                                              XX                                                                              XX                                                                              XX                                                                              XX                                                                              XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX',
+
+            areas: []
+ 	}, {
+            id: "level8",
+            idNum: 8,
+            name: "Zettafactory",
+            tilesX: 80,
+            tilesY: 41,
+            startX: 9,
+            startY: 8,
+            price: 1e18,
+            terrains: {
+                G: "grass",
+                X: "wall",
+                ".": "road",
+                " ": "floor"
+            },
+            buildableTerrains: {
+                floor: !0
+            },
+           terrainMap: 'XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX                                                                              XX                                                                              XX                                                                              XX                                                                              XX                                                                              XX                                                                              XX                                                                              XX                                                                              XX                                                                              XX                                                                              XX                                                                              XX                                                                              XX                                                                              XX                                                                              XX                                                                              XX                                                                              XX                                                                              XX                                                                              XX                                                                              XX                                                                              XX                                                                              XX                                                                              XX                                                                              XX                                                                              XX                                                                              XX                                                                              XX                                                                              XX                                                                              XX                                                                              XX                                                                              XX                                                                              XX                                                                              XX                                                                              XX                                                                              XX                                                                              XX                                                                              XX                                                                              XX                                                                              XX                                                                              XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX',
+buildMap: 'XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX                                                                              XX                                                                              XX                                                                              XX                                                                              XX                                                                              XX                                                                              XX                                                                              XX                                                                              XX                                                                              XX                                                                              XX                                                                              XX                                                                              XX                                                                              XX                                                                              XX                                                                              XX                                                                              XX                                                                              XX                                                                              XX                                                                              XX                                                                              XX                                                                              XX                                                                              XX                                                                              XX                                                                              XX                                                                              XX                                                                              XX                                                                              XX                                                                              XX                                                                              XX                                                                              XX                                                                              XX                                                                              XX                                                                              XX                                                                              XX                                                                              XX                                                                              XX                                                                              XX                                                                              XX                                                                              XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX',
+
+            areas: []
+ }, {
+            id: "level9",
+            idNum: 9,
+            name: "Yottafactory",
+            tilesX: 80,
+            tilesY: 41,
+            startX: 9,
+            startY: 8,
+            price: 1e18,
+            terrains: {
+                G: "grass",
+                X: "wall",
+                ".": "road",
+                " ": "floor"
+            },
+            buildableTerrains: {
+                floor: !0
+            },
+            terrainMap: 'XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX                                                                              XX                                                                              XX                                                                              XX                                                                              XX                                                                              XX                                                                              XX                                                                              XX                                                                              XX                                                                              XX                                                                              XX                                                                              XX                                                                              XX                                                                              XX                                                                              XX                                                                              XX                                                                              XX                                                                              XX                                                                              XX                                                                              XX                                                                              XX                                                                              XX                                                                              XX                                                                              XX                                                                              XX                                                                              XX                                                                              XX                                                                              XX                                                                              XX                                                                              XX                                                                              XX                                                                              XX                                                                              XX                                                                              XX                                                                              XX                                                                              XX                                                                              XX                                                                              XX                                                                              XX                                                                              XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX',
+buildMap: 'XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX                                                                              XX                                                                              XX                                                                              XX                                                                              XX                                                                              XX                                                                              XX                                                                              XX                                                                              XX                                                                              XX                                                                              XX                                                                              XX                                                                              XX                                                                              XX                                                                              XX                                                                              XX                                                                              XX                                                                              XX                                                                              XX                                                                              XX                                                                              XX                                                                              XX                                                                              XX                                                                              XX                                                                              XX                                                                              XX                                                                              XX                                                                              XX                                                                              XX                                                                              XX                                                                              XX                                                                              XX                                                                              XX                                                                              XX                                                                              XX                                                                              XX                                                                              XX                                                                              XX                                                                              XX                                                                              XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX',
+	
+            areas: []
         }];
         return e
     }), define("config/main/research", [], function() {
@@ -3177,7 +3455,7 @@
             description: "Each level gives +1 tick/sec",
             priceResearchPoints: 50,
             priceIncrease: 50,
-            max: 10,
+            max: 20,
             requiresResearch: "researchCenter"
         }, {
             id: "steelComponents",
@@ -3283,7 +3561,7 @@
             idNum: 17,
             name: "Analytics center",
             iconX: 3,
-            iconY: 0,
+            iconY: 1,
             description: "Provides higher quality research",
             priceResearchPoints: e(250, 2),
             priceIncrease: 1,
@@ -3315,7 +3593,7 @@
             id: "dieselRefinery",
             idNum: 10,
             name: "Diesel refinery",
-            iconX: 5,
+            iconX: 6,
             iconY: 1,
             description: "Diesel increases tanks value.",
             priceResearchPoints: e(75, 3),
@@ -3326,7 +3604,7 @@
             id: "rocketComponents",
             idNum: 11,
             name: "Rocket components",
-            iconX: 6,
+            iconX: 7,
             iconY: 1,
             description: "Allows producing rockets",
             priceResearchPoints: e(1, 4),
@@ -3337,7 +3615,7 @@
             id: "qualityCenter",
             idNum: 19,
             name: "Quality center",
-            iconX: 9,
+            iconX: 8,
             iconY: 1,
             description: "Provides higher quality research",
             priceResearchPoints: e(2, 4),
@@ -3348,7 +3626,7 @@
             id: "cleanEngines",
             idNum: 12,
             name: "Clean engines",
-            iconX: 7,
+            iconX: 9,
             iconY: 1,
             description: "Engine makers production will not produce waste",
             priceResearchPoints: e(1, 4),
@@ -3360,12 +3638,23 @@
             idNum: 18,
             name: "Drone components",
             iconX: 8,
-            iconY: 1,
+            iconY: 0,
             description: "Allows producing drones",
             priceResearchPoints: e(99, 4),
             priceIncrease: 1,
             max: 1,
             requiresResearch: "rocketComponents"
+		}, {
+			id: "hComponents",
+			idNum: 30,
+			name: "Helicopter components",
+			iconX: 9,
+			iconY: 0,
+			description: "Allows producing copters",
+			priceResearchPoints: e(99, 5),
+			priceIncrease: 1,
+			max: 1,
+			requiresResearch: "droneComponents"
         }]
     }), define("config/main/upgrades", [], function() {
         var e = function(e, t) {
@@ -3427,9 +3716,15 @@
                 iconY: 1,
                 items: ["aluminiumBuyerRunningCost", "_", "aluminiumBuyerBuyAmount"]
             }, {
-                type: "break"
-            }, {
-                type: "break"
+				name: "Titanium buyer",
+				iconX: 8,
+				iconY: 3,
+				items: ["titaniumBuyerBuyAmount"]
+			}, {
+				name: "Helicopter Maker",
+				iconX: 8,
+				iconY: 4,
+				items: ["hMakerConvertAmount"]
             }, {
                 name: "Iron foundry",
                 iconX: 3,
@@ -3562,6 +3857,9 @@
                 }, {
                     price: e(1, 16),
                     bonus: 1
+				  }, {
+                    price: e(1, 18),
+                    bonus: 4
                 }]
             }, {
                 id: "ironBuyerBuyAmount",
@@ -3599,6 +3897,9 @@
                 }, {
                     price: e(10, 14),
                     bonus: 32
+				}, {
+                    price: 1000000000000000,
+                    bonus: 96
                 }]
             }, {
                 id: "ironFoundryConvertAmount",
@@ -3634,6 +3935,28 @@
                     price: e(20, 14),
                     bonus: 48
                 }]
+		}, {
+				id: "hMakerConvertAmount",
+				idNum: 89,
+				iconX: 1,
+				iconY: 0,
+				requiresResearch: "hComponents",
+				type: "converter",
+				componentId: "hMaker",
+				refund: .8,
+				levels: [{
+					price: e(8, 2),
+					bonus: 1
+				}, {
+					price: e(8, 4),
+					bonus: 2
+				}, {
+					price: e(8, 5),
+					bonus: 2
+				}, {
+					price: e(7, 9),
+					bonus: 6
+				}]
             }, {
                 id: "ironSellerSellAmount",
                 idNum: 3,
@@ -3655,7 +3978,7 @@
                 idNum: 4,
                 iconX: 3,
                 iconY: 0,
-                type: "sellerSellPrice",
+                type: "sellerSellPrice",	
                 componentId: "ironSeller",
                 levels: [{
                     price: e(5, 2),
@@ -3752,7 +4075,7 @@
             }, {
                 id: "coalBuyerRunningCost",
                 idNum: 6,
-                iconX: 0,
+                iconX: 4,
                 iconY: 0,
                 requiresResearch: "steelComponents",
                 type: "runningCost",
@@ -3830,6 +4153,9 @@
                 }, {
                     price: e(3, 11),
                     bonus: 12
+				 }, {
+                    price: 1000000000000000,
+                    bonus: 24
                 }]
             }, {
                 id: "gasBuyerBuyAmount",
@@ -3874,6 +4200,9 @@
                 }, {
                     price: e(6, 11),
                     bonus: 3
+				  }, {
+                    price: 1000000000000000,
+                    bonus: 6
                 }]
             }, {
                 id: "plasticMakerConvertMoreAmount",
@@ -4016,6 +4345,9 @@
                 }, {
                     price: e(3, 9),
                     bonus: 1
+				 }, {
+                    price: 1000000000000000,
+                    bonus: 3
                 }]
             }, {
                 id: "electronicsMakerConvertMoreAmount",
@@ -4124,6 +4456,9 @@
                 }, {
                     price: e(120, 14),
                     bonus: 8
+				  }, {
+                    price: 1000000000000000,
+                    bonus: 16
                 }]
             }, {
                 id: "bulletMakerConvertAmount",
@@ -4143,6 +4478,9 @@
                 }, {
                     price: e(35, 13),
                     bonus: 4
+				 }, {
+                    price: 1000000000000000,
+                    bonus: 8
                 }]
             }, {
                 id: "gunMakerConvertAmount",
@@ -4261,6 +4599,31 @@
                     price: e(60, 14),
                     bonus: 32
                 }]
+		}, {
+				id: "titaniumBuyerBuyAmount",
+				idNum: 96,
+				iconX: 0,
+				iconY: 0,
+				requiresResearch: "droneComponents",
+				type: "buyer",
+				componentId: "titaniumBuyer",
+				refund: .8,
+				levels: [{
+					price: e(300, 9),
+					bonus: 1
+				}, {
+					price: e(600, 9),
+					bonus: 2
+				}, {
+					price: e(150, 10),
+					bonus: 4
+				}, {
+					price: e(1, 14),
+					bonus: 24
+				}, {
+					price: e(60, 14),
+					bonus: 32
+				}]
             }, {
                 id: "engineMakerConvertAmount",
                 idNum: 30,
@@ -4542,6 +4905,9 @@
                 levels: [{
                     price: e(150, 10),
                     bonus: 1
+				}, {
+					price: e(150, 10),
+                    bonus: 2
                 }]
             }, {
                 id: "rocketWarheadMakerConvertAmount",
@@ -4555,6 +4921,9 @@
                 levels: [{
                     price: e(200, 10),
                     bonus: 1
+				}, {
+					price: e(150, 10),
+                    bonus: 2
                 }]
             }, {
                 id: "rocketAssemblerConvertAmount",
@@ -9656,7 +10025,7 @@
             }.bind(this)), this.factory.getEventManager().addListener(s, FactoryEvent.COMPONENT_META_SELECTED, function(e) {
                 this.factory.getEventManager().invokeEvent(FactoryEvent.COMPONENT_SELECTED, null), this.selectedComponentMetaId = e, this.mouseInfoHelper.updateMouseInformationModes(e, t), n = null
             }.bind(this)), this.factory.getEventManager().addListener(s, FactoryEvent.MAP_TOOL_SELECTED, function(e) {
-                this.factory.getEventManager().invokeEvent(FactoryEvent.COMPONENT_SELECTED, null), this.selectedMapToolId = e, n = null
+                this.factory.getEventManager().invokeEvent(FactoryEvent.COMPONENT_SELECTED, null), this.selectedMapToolId = null, n = null
             }.bind(this)), this.factory.getEventManager().addListener(s, FactoryEvent.COMPONENT_SELECTED, function(e) {
                 this.mouseInfoHelper.updateComponentSelected(e)
             }.bind(this))
@@ -10235,7 +10604,7 @@
                 r = n * this.game.getTicker().getTicksPerSec();
             isNaN(r) && (r = 0);
             var i = '<table cellspacing="0" cellpadding="0" border="0">';
-            i += "<tr>", i += '<td align="center" width="100"></td>', i += '<td align="center" width="100"><b>15min</b></td>', i += '<td align="center" width="100"><b>1h</b></td>', i += '<td align="center" width="100"><b>24h</b></td>', i += '<td align="center" width="100"><b>1 week</b></td>', i += "<tr>", i += "<tr>", i += '<td align="center" ><b class="research">Research:</b></td>', i += '<td align="center" class="research">' + nf(t * 15 * 60) + "</td>", i += '<td align="center" class="research">' + nf(t * 60 * 60) + "</td>", i += '<td align="center" class="research">' + nf(t * 60 * 60 * 24) + "</td>", i += '<td align="center" class="research">' + nf(t * 60 * 60 * 24 * 7) + "</td>", i += "<tr>", i += "<tr>", i += '<td align="center" ><b class="money">Money</b></td>', i += '<td align="center" class="money">$' + nf(r * 15 * 60) + "</td>", i += '<td align="center" class="money">$' + nf(r * 60 * 60) + "</td>", i += '<td align="center" class="money">$' + nf(r * 60 * 60 * 24) + "</td>", i += '<td align="center" class="money">$' + nf(r * 60 * 60 * 24 * 7) + "</td>", i += "<tr>", i += "<tr>", i += '<td align="center" width="100"></td>', i += '<td align="center" width="100"><a href="javascript:void(0)" class="passTime" style="color:white" data-amount="15">PASS</a></td>', i += '<td align="center" width="100"><a href="javascript:void(0)" class="passTime" style="color:white" data-amount="60">PASS</a></td>', i += '<td align="center" width="100"><a href="javascript:void(0)" class="passTime" style="color:white" data-amount="1440">PASS</a></td>', i += '<td align="center" width="100"><a href="javascript:void(0)" class="passTime" style="color:white" data-amount="10080">PASS</a></td>', i += "<tr>", i += "</table>", this.infoContainer.html(i);
+            //i += "<tr>", i += '<td align="center" width="100"></td>', i += '<td align="center" width="100"><b>15min</b></td>', i += '<td align="center" width="100"><b>1h</b></td>', i += '<td align="center" width="100"><b>24h</b></td>', i += '<td align="center" width="100"><b>1 week</b></td>', i += "<tr>", i += "<tr>", i += '<td align="center" ><b class="research">Research Calculations:</b></td>', i += '<td align="center" class="research">' + nf(t * 15 * 60) + "</td>", i += '<td align="center" class="research">' + nf(t * 60 * 60) + "</td>", i += '<td align="center" class="research">' + nf(t * 60 * 60 * 24) + "</td>", i += '<td align="center" class="research">' + nf(t * 60 * 60 * 24 * 7) + "</td>", i += "<tr>", i += "<tr>", i += '<td align="center" ><b class="money">Money Calculations</b></td>', i += '<td align="center" class="money">$' + nf(r * 15 * 60) + "</td>", i += '<td align="center" class="money">$' + nf(r * 60 * 60) + "</td>", i += '<td align="center" class="money">$' + nf(r * 60 * 60 * 24) + "</td>", //i += '<td align="center" class="money">$' + nf(r * 60 * 60 * 24 * 7) + "</td>", i += "<tr>", i += "<tr>", i += '<td align="center" width="100"></td>', i += '<td align="center" width="100"><a href="javascript:void(0)" class="passTime" style="color:white" data-amount="15">PASS</a></td>', i += '<td align="center" width="100"><a href="javascript:void(0)" class="passTime" style="color:white" data-amount="60">PASS</a></td>', i += '<td align="center" width="100"><a href="javascript:void(0)" class="passTime" style="color:white" data-amount="1440">PASS</a></td>', i += '<td align="center" width="100"><a href="javascript:void(0)" class="passTime" style="color:white" data-amount="10080">PASS</a></td>', i += "<tr>", i += "</table>", this.infoContainer.html(i);
             var s = this;
             this.infoContainer.find(".passTime").click(function(e) {
                 var t = $(e.target).attr("data-amount"),
@@ -10312,9 +10681,9 @@
         }, s.prototype.destroy = function() {
             this.game.getEventManager().removeListenerForType(i), this.container.html(""), this.container = null
         }, s
-    }), define("text!template/factory/mapTools.html", [], function() {
-        return '<div class="mapToolsBox">\r\n    <div class="location"></div>\r\n    <div class="title">Map tools</div>\r\n    <div class="help">Press ALT to draw</div>\r\n\r\n    <div class="button buttonSelected but" data-id="">Nothing</div>\r\n    {{#each tools}}\r\n    {{#if showBreak}}\r\n    <br style="clear:both"/>\r\n    {{/if}}\r\n    <div class="button but{{id}}" data-id="{{id}}">\r\n        <div class="mapTool {{id}}" data-id="{{id}}">{{name}}</div>\r\n    </div>\r\n    {{/each}}\r\n    <br style="clear:both"/>\r\n    <br/>\r\n\r\n    <div class="title">Map data</div>\r\n    <textArea id="mapData"></textArea><br/>\r\n</div>'
-    }), define("ui/factory/MapToolsUi", ["text!template/factory/mapTools.html"], function(e) {
+    }), /*define("text!template/factory/mapTools.html", [], function() {
+        return '<div class="mapToolsBox">\r\n    <div class="location"></div>\r\n    <div class="title">Map tools(Intentionally Broken)</div>\r\n    <div class="help">Press ALT to draw</div>\r\n\r\n    <div class="button buttonSelected but" data-id="">Nothing</div>\r\n    {{#each tools}}\r\n    {{#if showBreak}}\r\n    <br style="clear:both"/>\r\n    {{/if}}\r\n    <div class="button but{{id}}" data-id="{{id}}">\r\n        <div class="mapTool {{id}}" data-id="{{id}}">{{name}}</div>\r\n    </div>\r\n    {{/each}}\r\n    <br style="clear:both"/>\r\n    <br/>\r\n\r\n    <div class="title">Map data</div>\r\n    <textArea id="mapData"></textArea><br/>\r\n</div>'
+    }),*/ define("ui/factory/MapToolsUi", ["text!template/factory/mapTools.html"], function(e) {
         var t = "factoryMapToolsUi",
             n = function(e) {
                 this.factory = e, this.game = e.getGame(), this.selectedToolId = null
@@ -10423,7 +10792,7 @@
             if (this.game.getIsPremium()) {
                 $(".main").addClass("fullScreen");
                 var n = this.container.find(".mapContainer");
-                n.css("width", $(window).width() - 250), n.css("height", $(window).height() - 150)
+                n.css("width", $(window).width() - 250), n.css("height", $(window).height() - 100)
             }
             this.menuUi.display(this.container.find(".menuContainer")), this.mapUi.display(this.container.find(".mapContainer")), this.componentsUi.display(this.container.find(".componentsContainer")), this.infoUi.display(this.container.find(".infoContainer")), this.controlsUi.display(this.container.find(".controlsContainer")), this.overviewUi.display(this.container.find(".overviewContainer")), this.play.isDevMode() && this.mapToolsUi.display(this.container.find(".mapToolsContainer")), this.incentivizedAdButtonUi.display(this.container.find(".incentivizedAd"))
         }, l.prototype.destroy = function() {
@@ -10827,7 +11196,7 @@
             this.game.getEventManager().removeListenerForType(s), this.gameUiEm.removeListenerForType(s), this.container.html(""), this.container = null
         }, o
     }), define("text!template/purchases.html", [], function() {
-        return '<div id="purchasesBg"></div>\r\n<div id="purchases">\r\n    <a href="javascript:void(0);" class="closeButton" style="float:right; display:block;">Close</a>\r\n\r\n    <b>Extra</b><br/><br/>\r\n\r\n    I really like making games and have been building them from my free time for a very long time. (Check my games)<br/>\r\n\r\n    But as making games is very time consuming (I have two young children and a full time job at a startup. So if you can\r\n    relate, imagine that :p),\r\n    I highly appreciate any support - would it be ideas, comments, criticism or monetary!<br/>\r\n\r\n    With this game I have good ideas on what features to add and if you like this game, I kindly ask you to show your\r\n    support by making a\r\n    purchase. I don\'t expect these games to pay a salary, but to cover at least some of the time I put into making them.\r\n    :)<br/>\r\n    I really don\'t like monetizing strategies games use nowadays - pay for every freaking move, so most certainly I will\r\n    not follow them.<br/>\r\n    <br/>\r\n    {{#if mainSiteVersion}}\r\n    <b>Any purchase will remove ads and scales game to use whole screen. (Only if played at factoryidle.com)</b><br/>\r\n    {{/if}}\r\n    <br style="clear:both"/>\r\n\r\n\r\n    <div class="specials">\r\n        {{#each specials}}\r\n        <div class="item {{#if isBought}}boughtItem{{/if}}" data-id="{{id}}">\r\n            <div class="name">{{name}}</div>\r\n            <div class="description">{{{description}}}</div>\r\n            <div class="buy">\r\n                {{#if isBought}}\r\n                <span class="bought">Bought</span>\r\n                {{else}}\r\n                <a href="javascript:void(0);" data-purchaseId="{{id}}" class="button">Get it!</a>\r\n                {{/if}}\r\n            </div>\r\n            <div class="price">{{#if isBought}}&nbsp;{{else}}{{priceStr}}{{/if}}</div>\r\n        </div>\r\n        {{/each}}\r\n    </div>\r\n    <br style="clear:both;"/>\r\n\r\n\r\n    <table class="timeTravelTable listTable">\r\n        <tr>\r\n            <td colspan="4" class="title">Time travel</td>\r\n        </tr>\r\n        <tr>\r\n            <td colspan="4" class="description">Each ticket gives you <b>3 hour</b> income and research points. <br/>You can use them any time you like after the purchase.</td>\r\n        </tr>\r\n        {{#each timeTravelTickets}}\r\n        <tr class="item" data-id="{{id}}">\r\n            <td width="150">{{name}}</td>\r\n            <td width="40">{{priceStr}}</td>\r\n            <td class="comment">{{description}}</td>\r\n            <td width="50"><a href="javascript:void(0);" data-purchaseId="{{id}}" class="button">Get it!</a></td>\r\n        </tr>\r\n        {{/each}}\r\n    </table>\r\n\r\n\r\n    <table class="bonusTicksTable listTable">\r\n        <tr>\r\n            <td colspan="4" class="title"><b>Bonus ticks</b></td>\r\n        </tr>\r\n        <tr>\r\n            <td colspan="4" class="description">Makes game ticks run really fast - <b>up to 200ticks/sec</b><br/>(Ticks run fastest if game runs in background mode - not focused)</td>\r\n        </tr>\r\n        {{#each bonusTicks}}\r\n        <tr class="item" data-id="{{id}}">\r\n            <td width="150">{{name}}</td>\r\n            <td width="40">{{priceStr}}</td>\r\n            <td class="comment">{{description}}</td>\r\n            <td width="50"><a href="javascript:void(0);" data-purchaseId="{{id}}" class="button">Get it!</a></td>\r\n        </tr>\r\n        {{/each}}\r\n    </table>\r\n    <br style="clear:both"/>\r\n    <br/>\r\n    <span style="font-size:0.9em; color:gray">* If you have problems with purchases, write to <a href="mailto:factoryidle@inditel.ee" style="color:gray" target="_blank">factoryidle@inditel.ee</a>. Please attach your user key.</span>\r\n</div>'
+        return '<div id="purchasesBg"></div>\r\n<div id="purchases">\r\n    <a href="javascript:void(0);" class="closeButton" style="float:right; display:block;">Close</a>\r\n\r\n    <b>Extra</b><br/><br/>\r\n\r\n    This game is a modification of the game FactoryIdle to run better on a local computer<br/>\r\n\r\n    All credit goes to the creator of FactoryIdle, as I have enjoyed playing it and modifying it. The original game \r\n    can be played at factoryidle.com. \r\n    I would highly appreciate any support - would it be ideas, comments, criticism or monetary ;)!<br/>\r\n\r\n    With this game I have good ideas on what features to add and if you like this game, I kindly ask you to share the game\r\n    with people you know. :)   \r\n         I don\'t expect these games to be perfect, but i expect it to be playable, report bugs to je	ffastedman@gmail.com.\r\n    :)<br/>\r\n    I really don\'t like monetizing strategies games use nowadays - pay for every freaking move, so most certainly I will\r\n    not follow them.<br/>\r\n    <br/>\r\n    {{#if mainSiteVersion}}\r\n    <b>These items below can be taken, and will speed up the game, but if you want a challenge, do not take them.</b><br/>\r\n    {{/if}}\r\n    <br style="clear:both"/>\r\n\r\n\r\n    <div class="specials">\r\n        {{#each specials}}\r\n        <div class="item {{#if isBought}}boughtItem{{/if}}" data-id="{{id}}">\r\n            <div class="name">{{name}}</div>\r\n            <div class="description">{{{description}}}</div>\r\n            <div class="buy">\r\n                {{#if isBought}}\r\n                <span class="bought">Bought</span>\r\n                {{else}}\r\n                <a href="javascript:void(0);" data-purchaseId="{{id}}" class="button">Get it!</a>\r\n                {{/if}}\r\n            </div>\r\n            <div class="price">{{#if isBought}}&nbsp;{{else}}{{priceStr}}{{/if}}</div>\r\n        </div>\r\n        {{/each}}\r\n    </div>\r\n    <br style="clear:both;"/>\r\n\r\n\r\n    <table class="timeTravelTable listTable">\r\n        <tr>\r\n            <td colspan="4" class="title">Time travel</td>\r\n        </tr>\r\n        <tr>\r\n            <td colspan="4" class="description">Each ticket gives you <b>3 hour</b> income and research points. <br/>You can use them any time you like after the purchase.</td>\r\n        </tr>\r\n        {{#each timeTravelTickets}}\r\n        <tr class="item" data-id="{{id}}">\r\n            <td width="150">{{name}}</td>\r\n            <td width="40">{{priceStr}}</td>\r\n            <td class="comment">{{description}}</td>\r\n            <td width="50"><a href="javascript:void(0);" data-purchaseId="{{id}}" class="button">Get it!</a></td>\r\n        </tr>\r\n        {{/each}}\r\n    </table>\r\n\r\n\r\n    <table class="bonusTicksTable listTable">\r\n        <tr>\r\n            <td colspan="4" class="title"><b>Bonus ticks</b></td>\r\n        </tr>\r\n        <tr>\r\n            <td colspan="4" class="description">Makes game ticks run really fast - <b>up to 200ticks/sec</b><br/>(Ticks run fastest if game runs in background mode - not focused)</td>\r\n        </tr>\r\n        {{#each bonusTicks}}\r\n        <tr class="item" data-id="{{id}}">\r\n            <td width="150">{{name}}</td>\r\n            <td width="40">{{priceStr}}</td>\r\n            <td class="comment">{{description}}</td>\r\n            <td width="50"><a href="javascript:void(0);" data-purchaseId="{{id}}" class="button">Get it!</a></td>\r\n        </tr>\r\n        {{/each}}\r\n    </table>\r\n    <br style="clear:both"/>\r\n    <br/>\r\n    <span style="font-size:0.9em; color:gray">* I hope you enjoy the game! :)</span>\r\n</div>'
     }), define("ui/PurchasesUi", ["text!template/purchases.html", "play/UrlHandler"], function(e, t) {
         var n = "purchases",
             r = function(e, t) {
