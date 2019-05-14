@@ -1060,7 +1060,7 @@
                     ["droneMaker", "droneControlRoom", "droneSeller"],
                     ["metalsLab", "gasAndOilLab", "analystCenter", "qualityLab"],
                     ["researchCenter", "researchCenter2", "researchCenter3", "researchCenter4"],
-		   			["titaniumBuyer", "pMaker", "hMaker", "hSeller"]
+		    ["titaniumBuyer", "pMaker", "hMaker", "hSeller"]
                 ],
                 productionTree: {
                     ironFoundry: {
