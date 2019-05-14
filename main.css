@@ -291,7 +291,7 @@ div.vis-color-picker input.vis-range{width:290px;height:20px}
 .researchBox .header{padding-left:10px;}
 .researchBox .researchItem{width:400px;height:30px;background-color:black;float:left;border:1px solid rgb(56,56,56);border-radius:5px;margin:5px;padding:5px;}
 .researchBox .researchItem .icon{width:29px;height:29px;border:1px solid gray;margin-right:5px;float:left;border-radius:2px;}
-.researchBox .researchItem .iconSelf{width:25px;height:25px;margin:2px;background:url(https://1198159.github.io/img/componentIcons.png) no-repeat;}
+.researchBox .researchItem .iconSelf{width:25px;height:25px;margin:2px;background:url(https://1198159.github.io/img/researchIcons.png) no-repeat;}
 .researchBox .researchItem .description{font-size:0.9em;color:lightgray;}
 .researchBox .researchItem .priceTitle{font-size:0.8em;color:lightgray;}
 .researchBox .researchItem .buyButton{float:right;width:50px;margin:3px auto 0 auto;border-radius:5px;text-align:center;border:1px solid greenyellow;color:greenyellow;padding:3px;cursor:pointer;}
@@ -325,7 +325,7 @@ div.vis-color-picker input.vis-range{width:290px;height:20px}
 .upgradesBox .upgradeGroup{width:400px;background-color:black;overflow:hidden;float:left;border:1px solid rgb(56,56,56);border-radius:5px;margin:5px;padding:5px;}
 .upgradesBox .upgradeGroup .head{overflow:hidden;}
 .upgradesBox .upgradeGroup .head .buildingIcon{width:29px;height:29px;margin-right:5px;border:1px solid gray;float:left;border-radius:2px;}
-.upgradesBox .upgradeGroup .head .buildingIconSelf{width:25px;height:25px;margin:2px;background:gray url(https://1198159.github.io/img/researchIcons.png) no-repeat;}
+.upgradesBox .upgradeGroup .head .buildingIconSelf{width:25px;height:25px;margin:2px;background:gray url(https://1198159.github.io/img/componentIcons.png) no-repeat;}
 .upgradesBox .upgradeGroup .head .text{margin-top:6px;float:left;font-weight:bold;}
 .upgradesBox .upgradeItem{float:right;cursor:pointer;margin-right:2px;border:1px solid gray;border-radius:3px;}
 .upgradesBox .upgradeItem_buy{width:29px;height:29px;}
