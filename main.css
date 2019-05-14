@@ -329,7 +329,7 @@ div.vis-color-picker input.vis-range{width:290px;height:20px}
 .upgradesBox .upgradeGroup .head .text{margin-top:6px;float:left;font-weight:bold;}
 .upgradesBox .upgradeItem{float:right;cursor:pointer;margin-right:2px;border:1px solid gray;border-radius:3px;}
 .upgradesBox .upgradeItem_buy{width:29px;height:29px;}
-.upgradesBox .upgradeItem_buy .upgradeIcon{pointer-events:none;width:23px;height:12px;margin:2px;padding-right:2px;padding-top:13px;background:gray url(https://1198159.github.io/img/upgradeActionIcons.png) no-repeat;color:white;font-weight:bold;font-size:10px;text-align:right;}
+.upgradesBox .upgradeItem_buy .upgradeIcon{pointer-events:none;width:23px;height:12px;margin:2px;padding-right:2px;padding-top:13px;background:gray url(https://1198159.github.io/factoryidle2.0/img/upgradeActionIcons.png) no-repeat;color:white;font-weight:bold;font-size:10px;text-align:right;}
 .upgradesBox .upgradeItemMaxed{border-color:lightgreen !important;background-color:lightgreen;cursor:no-drop;}
 .upgradesBox .upgradeItemMaxed .upgradeIcon{opacity:.4;}
 .upgradesBox .upgradeItemCantBuy{border-color:red !important;background-color:red;cursor:no-drop;}
