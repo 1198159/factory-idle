@@ -291,7 +291,7 @@ div.vis-color-picker input.vis-range{width:290px;height:20px}
 .researchBox .header{padding-left:10px;}
 .researchBox .researchItem{width:400px;height:30px;background-color:black;float:left;border:1px solid rgb(56,56,56);border-radius:5px;margin:5px;padding:5px;}
 .researchBox .researchItem .icon{width:29px;height:29px;border:1px solid gray;margin-right:5px;float:left;border-radius:2px;}
-.researchBox .researchItem .iconSelf{width:25px;height:25px;margin:2px;background:url(https://1198159.github.io/img/researchIcons.png) no-repeat;}
+.researchBox .researchItem .iconSelf{width:25px;height:25px;margin:2px;background:url(https://1198159.github.io/img/componentIcons.png) no-repeat;}
 .researchBox .researchItem .description{font-size:0.9em;color:lightgray;}
 .researchBox .researchItem .priceTitle{font-size:0.8em;color:lightgray;}
 .researchBox .researchItem .buyButton{float:right;width:50px;margin:3px auto 0 auto;border-radius:5px;text-align:center;border:1px solid greenyellow;color:greenyellow;padding:3px;cursor:pointer;}
@@ -351,7 +351,7 @@ div.vis-color-picker input.vis-range{width:290px;height:20px}
 .componentsBox .buttonArea{width:29px;}
 .componentsBox .button{border:2px solid rgb(35,35,35);border-radius:3px;background-color:black;float:left;cursor:pointer;width:25px;height:25px;overflow:hidden;}
 .componentsBox .buttonSelected{border:2px solid rgb(134,255,128);}
-.componentsBox .icon{background:url(1198159.github.io/factoryidle-life/img/componentIcons.png) no-repeat;width:25px;height:25px;overflow:shown;}
+.componentsBox .icon{background:url(1198159.github.io/img/componentIcons.png) no-repeat;width:25px;height:25px;overflow:shown;}
 .controlsBox{width:160px;float:left;overflow:hidden;padding-top:10px;}
 .controlsBox .button{display:block;float:left;border:1px solid gray;padding:3px;border-radius:5px;color:gray;text-decoration:none;text-align:center;margin:5px 5px 0 0;}
 .controlsBox .button:hover{background-color:rgb(40,40,40);}
