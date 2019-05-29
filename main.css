@@ -402,7 +402,7 @@ div.vis-color-picker input.vis-range{width:290px;height:20px}
 html{overflow-y:scroll;height:100%;color:white;}
 body{margin:0;padding:0;font-size:0.8em;height:100%;font-family:Verdana,Arial,Helvetica,sans-serif;background:black url(https://1198159.github.io/factory-idle/img/design/background.png);}
 body,html,div,span,td{-webkit-touch-callout:none;-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none;}
-.main{margin:0 auto 0 auto;width:898px;min-height:598px;}
-.mainWithAdd{width:1198px;height:618px; !important;}
+.main{margin:0 auto 0 auto;width:1198px;min-height:598px;}
+.mainWithAdd{width:1498px;height:618px; !important;}
 #gameArea{width:898px;height:598px;float:left;border-top:1px solid gray;}
 #componentsInfo{width:300px;float:right;}
