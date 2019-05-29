@@ -5,7 +5,7 @@
 .vis-active{box-shadow:0 0 10px #86d5f8}
 .vis [class*=span]{min-height:0;width:auto}
 div.vis-configuration{position:relative;display:block;float:left;font-size:12px}
-div.vis-configuration-wrapper{display:block;width:700px}
+div.vis-configuration-wrapper{display:block;width:1198px}
 div.vis-configuration-wrapper::after{clear:both;content:"";display:block}
 div.vis-configuration.vis-config-option-container{display:block;width:495px;background-color:#fff;border:2px solid #f7f8fa;border-radius:4px;margin-top:20px;left:10px;padding-left:5px}
 div.vis-configuration.vis-config-button{display:block;width:495px;height:25px;vertical-align:middle;line-height:25px;background-color:#f7f8fa;border:2px solid #ceced0;border-radius:4px;margin-top:20px;left:10px;padding-left:5px;cursor:pointer;margin-bottom:30px}
@@ -404,5 +404,5 @@ body{margin:0;padding:0;font-size:0.8em;height:100%;font-family:Verdana,Arial,He
 body,html,div,span,td{-webkit-touch-callout:none;-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none;}
 .main{margin:0 auto 0 auto;width:898px;min-height:598px;}
 .mainWithAdd{width:1198px;height:618px; !important;}
-#gameArea{width:598px;height:598px;float:left;border-top:1px solid gray;}
+#gameArea{width:898px;height:598px;float:left;border-top:1px solid gray;}
 #componentsInfo{width:300px;float:right;}
