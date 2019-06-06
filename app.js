@@ -688,7 +688,7 @@
                 },
                 priceStr: {
                     local: "1u",
-                    web: "$2.99",
+                    web: "1u",
                     kongregate: "25 Kreds"
                 }
             }, {
@@ -703,7 +703,7 @@
                 },
                 priceStr: {
                     local: "2u",
-                    web: "$5.99",
+                    web: "2u",
                     kongregate: "50 Kreds"
                 }
             }, {
@@ -718,7 +718,7 @@
                 },
                 priceStr: {
                     local: "3u",
-                    web: "$9.99",
+                    web: "3u",
                     kongregate: "110 Kreds"
                 }
             }, {
@@ -733,7 +733,7 @@
                 },
                 priceStr: {
                     local: "4u",
-                    web: "$19.99",
+                    web: "4u",
                     kongregate: "225 Kreds"
                 }
             }, {
@@ -748,7 +748,7 @@
                 },
                 priceStr: {
                     local: "5u",
-                    web: "$59.99",
+                    web: "5u",
                     kongregate: "565 Kreds"
                 }
             }, {
@@ -763,7 +763,7 @@
                 },
                 priceStr: {
                     local: "6u",
-                    web: "$119.99",
+                    web: "6u",
                     kongregate: "1150 Kreds"
                 }
             }, {
@@ -778,7 +778,7 @@
                 },
                 priceStr: {
                     local: "1u",
-                    web: "$2.99",
+                    web: "1u",
                     kongregate: "25 Kreds"
                 }
             }, {
@@ -793,7 +793,7 @@
                 },
                 priceStr: {
                     local: "2u",
-                    web: "$5.99",
+                    web: "2u",
                     kongregate: "50 Kreds"
                 }
             }, {
@@ -808,7 +808,7 @@
                 },
                 priceStr: {
                     local: "3u",
-                    web: "$9.99",
+                    web: "3u",
                     kongregate: "110 Kreds"
                 }
             }, {
@@ -823,7 +823,7 @@
                 },
                 priceStr: {
                     local: "4u",
-                    web: "$19.99",
+                    web: "4u",
                     kongregate: "225 Kreds"
                 }
             }, {
@@ -838,7 +838,7 @@
                 },
                 priceStr: {
                     local: "5u",
-                    web: "$59.99",
+                    web: "5u",
                     kongregate: "565 Kreds"
                 }
             }, {
@@ -853,7 +853,7 @@
                 },
                 priceStr: {
                     local: "6u",
-                    web: "$119.99",
+                    web: 6u",
                     kongregate: "1150 Kreds"
                 }
             }, {
@@ -868,7 +868,7 @@
                 },
                 priceStr: {
                     local: "6u",
-                    web: "$9.99",
+                    web: "6u",
                     kongregate: "110 Kreds"
                 }
             }, {
@@ -884,7 +884,7 @@
                 },
                 priceStr: {
                     local: "6u",
-                    web: "$9.99",
+                    web: "6u",
                     kongregate: "110 Kreds"
                 }
             }, {
@@ -899,7 +899,7 @@
                 },
                 priceStr: {
                     local: "7u",
-                    web: "$19.99",
+                    web: "7u",
                     kongregate: "225 Kreds"
                 }
             }, {
@@ -915,7 +915,7 @@
                 },
                 priceStr: {
                     local: "7u",
-                    web: "$19.99",
+                    web: "7u",
                     kongregate: "225 Kreds"
                 }
             }, {
