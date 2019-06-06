@@ -853,7 +853,7 @@
                 },
                 priceStr: {
                     local: "6u",
-                    web: 6u",
+                    web: "6u",
                     kongregate: "1150 Kreds"
                 }
             }, {
